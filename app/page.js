@@ -1,7 +1,9 @@
-import Image from "next/image";
+import Link from "next/link";
+import Auth  from "./components/Auth"
 
 export default function Home() {
   return (
+    <Auth authPage={false} >
     <main className="flex flex-col h-auto items-center justify-between p-6">
       <section>
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
@@ -18,16 +20,16 @@ export default function Home() {
                 aliquid tempora. Obcaecati, autem.
               </p>
 
-              <a
+              <Link
                 href="#"
                 className="mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
               >
                 Get Started Today
-              </a>
+              </Link>
             </div>
 
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-              <a
+              <Link
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -55,9 +57,9 @@ export default function Home() {
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   Lorem ipsum dolor sit amet consectetur.
                 </p>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -85,9 +87,9 @@ export default function Home() {
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   Lorem ipsum dolor sit amet consectetur.
                 </p>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -115,9 +117,9 @@ export default function Home() {
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   Lorem ipsum dolor sit amet consectetur.
                 </p>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -145,9 +147,9 @@ export default function Home() {
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   Lorem ipsum dolor sit amet consectetur.
                 </p>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -175,11 +177,12 @@ export default function Home() {
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   Lorem ipsum dolor sit amet consectetur.
                 </p>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </section>
     </main>
+    </Auth>
   );
 }
