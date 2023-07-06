@@ -12,7 +12,7 @@ export const Header = () => {
         </h1>
 
         <p className="mt-1.5 text-sm text-gray-500">
-          Let's write a new blog post! 🎉
+          Let&apos;s write a new blog post! 🎉
         </p>
       </div>
 
