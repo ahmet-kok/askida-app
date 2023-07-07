@@ -1,15 +1,24 @@
-"use client"
+"use client";
 import React from "react";
+import jsCookie from "js-cookie";
+import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+
 import { useEffect } from "react";
 
 export default function Session({ params }) {
+  const router = useRouter();
   const token = params.id;
-  console.log(token);
+  const searchParams = useSearchParams();
+  const name = searchParams.get("name");
+  const email = searchParams.get("email");
   useEffect(() => {
     if (window) {
-      // set props data to session storage or local storage
+      jsCookie.set("token", token);
+      jsCookie.set("name", name);
+      jsCookie.set("email", email);
       window.localStorage.setItem("token", token);
     }
   }, []);
-  return <h1>hello {token}</h1>;
+  return router.push("/");;
 }

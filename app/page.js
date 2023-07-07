@@ -5,11 +5,13 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { CodeApp } from "./components/CodeApp";
 
+
 export default function Home() {
   const router = useRouter();
-
   useEffect(() => {
     if (window) {
+      
+
       // set props data to session storage or local storage
       if (!window.localStorage.getItem("token")) {
         router.push("/login");
@@ -17,7 +19,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <Auth authPage={false}>
+    <Auth authPage={false} name={name}>
       <main className="flex flex-col h-auto items-center justify-between p-6">
         <section>
           <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">

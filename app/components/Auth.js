@@ -2,10 +2,10 @@ import React from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
-function Auth({ children, authPage = false }) {
+function Auth({ children, authPage = false}) {
   return (
     <>
-      {!authPage && <Header />}
+      {!authPage && <Header name={name}/>}
       {children}
       {!authPage && <Footer />}
     </>
