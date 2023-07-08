@@ -4,14 +4,14 @@ import jsCookie from "js-cookie";
 import Link from "next/link";
 
 export const Header = (params) => {
-  const name = jsCookie.get('name');
+  
   return (
     <header>
   <div className="mx-auto max-w-screen-xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
     <div className="sm:flex sm:items-center sm:justify-between">
       <div className="text-center sm:text-left">
         <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-          Welcome Back, {name}!
+          Welcome Back, {params.name}!
         </h1>
 
         <p className="mt-1.5 text-sm text-gray-500">

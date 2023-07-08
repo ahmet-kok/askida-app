@@ -1,23 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import { useState } from "react";
-import { GetCode } from "./GetCode";
 
 export const CodeApp = (params) => {
-    const [showModal, setShowModal] = useState(false);
-
-    function handleClick() {
-        console.log('Click happened');
-      }
+  
 
   return (
-    <button onClick={() => setShowModal(true)}
-      className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-      href="/accountant"
+    <a onClick={params.onClick}
+      className="block cursor-pointer rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
     >
-    {showModal &&
-            <GetCode onClose={() => setShowModal(false)} name={params.name}/>
-        }
+      
       <span className="inline-block rounded-lg bg-gray-50 p-3">
         <svg
           className="h-6 w-6"
@@ -42,6 +33,6 @@ export const CodeApp = (params) => {
       <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
         {params.description}
       </p>
-    </button>
+    </a>
   );
 };

@@ -19,6 +19,6 @@ export default function Session({ params }) {
       jsCookie.set("email", email);
       window.localStorage.setItem("token", token);
     }
-  }, []);
-  return router.push("/");;
+  }, [name, email, token]);
+  return router.push("/");
 }
