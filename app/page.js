@@ -7,6 +7,7 @@ import { CodeApp } from "./components/CodeApp";
 import jsCookie from "js-cookie";
 import { useState } from "react";
 import { GetCode } from "./components/GetCode";
+import { GiveCode } from "./components/GiveCode";
 
 export default function Home() {
   const router = useRouter();
@@ -15,6 +16,11 @@ export default function Home() {
   function logOutHandler() {
     setAppInfo("logout");
     setWindowsState(true);
+    setDisable("opacity-25 z-0");
+  }
+  function giveCodeHandler() {
+    setGiveCodeWindowState(true);
+    setDisable("opacity-25 z-0");
   }
   const [name, setName] = useState("");
   const [appInfo, setAppInfo] = useState({
@@ -22,9 +28,14 @@ export default function Home() {
     key: "1",
   });
   const [windowState, setWindowsState] = useState(false);
+  const [giveCodeWindowState, setGiveCodeWindowState] = useState(false);
   function onClose() {
     if (windowState) {
       setWindowsState(false);
+      setDisable(null);
+      setAppInfo(null);
+    } else if (giveCodeWindowState) {
+      setGiveCodeWindowState(false);
       setDisable(null);
     }
   }
@@ -67,6 +78,60 @@ export default function Home() {
       key: "4",
     },
   ];
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    console.log("form submitted");
+    const name = event.target.appName.value;
+      const code = event.target.appCode.value;
+
+      const body = JSON.stringify({
+        name: name,
+        code: code
+      });
+
+      const res = await fetch(
+        "https://askida-kod.onrender.com/api/public/register",
+        {
+          body: body,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        }
+      );
+      const result = await res.json();
+  };
+    /* 
+    if (
+      event.target.password_confirmation.value == event.target.password.value
+    ) {
+      const fname = event.target.first_name.value;
+      const lname = event.target.last_name.value;
+      const email = event.target.email.value;
+      const password = event.target.password.value;
+      const body = JSON.stringify({
+        fname: fname,
+        lname: lname,
+        email: email,
+        password: password,
+      });
+      console.log(body);
+
+      const res = await fetch(
+        "https://askida-kod.onrender.com/api/public/register",
+        {
+          body: body,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        }
+      );
+      const result = await res.json();
+    } else console.log("parola yanlış"); */
+  
+
   return (
     <>
       {windowState && (
@@ -77,6 +142,12 @@ export default function Home() {
             info={appInfo}
             classes="justify-self-center z-10"
           />
+          <div className="z-0 w-full h-full" onClick={onClose}></div>
+        </div>
+      )}
+      {giveCodeWindowState && (
+        <div className="absolute z-10 bottom-0 top-0 items-center grid grid-cols-1 w-full">
+          <GiveCode submitHandler={submitHandler} onClose={onClose} classes="justify-self-center z-10" />
           <div className="z-0 w-full h-full" onClick={onClose}></div>
         </div>
       )}
@@ -102,12 +173,13 @@ export default function Home() {
                     minima aliquid tempora. Obcaecati, autem.
                   </p>
 
-                  <Link
-                    href="#"
-                    className="mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
+                  <a
+                    onClick={giveCodeHandler}
+                    
+                    className="mt-8 inline-block   px-12 py-3 text-sm font-medium text-white transition rounded bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
                   >
-                    Get Started Today
-                  </Link>
+                    Give Invitation Code
+                  </a>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
