@@ -117,7 +117,7 @@ export default function Login() {
                   </div>
 
                   <div className="mt-5 flex items-center justify-center ">
-                    <p className=" lg:w-max inline-flex">Don&apost have an account? Sign up!</p>
+                    <p className=" lg:w-max text-md text-gray-700 inline-flex">Don&apos;t have an account? Sign up!</p>
                     <div className="inline-flex w-max  ml-4 mr-4">
                       <label
                         htmlFor="AcceptConditions"
@@ -163,7 +163,7 @@ export default function Login() {
                         <span className="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-green-500"></span>
                       </label>
                     </div>
-                    <p className="lg:w-max inline-flex">Have an account?, sign in!</p>
+                    <p className="lg:w-max text-md text-gray-700 inline-flex">Have an account? Sign in!</p>
                   </div>
                   {!toggleStatus && (
                     <>
