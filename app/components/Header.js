@@ -3,7 +3,7 @@ import jsCookie from "js-cookie";
 
 import Link from "next/link";
 
-export const Header = (params) => {
+export const Header = ({name, logOutHandler}) => {
   
   return (
     <header>
@@ -11,7 +11,7 @@ export const Header = (params) => {
     <div className="sm:flex sm:items-center sm:justify-between">
       <div className="text-center sm:text-left">
         <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-          Welcome Back, {params.name}!
+          Welcome Back, {name}!
         </h1>
 
         <p className="mt-1.5 text-sm text-gray-500">
@@ -45,8 +45,9 @@ export const Header = (params) => {
         <button
           className="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
           type="button"
+          onClick={logOutHandler}
         >
-          Send Code
+          Log out
         </button>
       </div>
     </div>

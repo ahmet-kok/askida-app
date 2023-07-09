@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const Login = () => {
+  
   return (
     <section className="bg-white">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
@@ -73,7 +74,9 @@ export const Login = () => {
               </p>
             </div>
 
-            <form action="#" className="mt-8 grid grid-cols-6 gap-6">
+            <form 
+            onSubmit={submitContact}
+            className="mt-8 grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="FirstName"
@@ -82,7 +85,7 @@ export const Login = () => {
                   First Name
                 </label>
 
-                <input
+                <input required
                   type="text"
                   id="FirstName"
                   name="first_name"
@@ -98,7 +101,7 @@ export const Login = () => {
                   Last Name
                 </label>
 
-                <input
+                <input required
                   type="text"
                   id="LastName"
                   name="last_name"
@@ -114,7 +117,7 @@ export const Login = () => {
                   Email
                 </label>
 
-                <input
+                <input required
                   type="email"
                   id="Email"
                   name="email"
@@ -130,7 +133,7 @@ export const Login = () => {
                   Password
                 </label>
 
-                <input
+                <input required
                   type="password"
                   id="Password"
                   name="password"
@@ -146,7 +149,7 @@ export const Login = () => {
                   Password Confirmation
                 </label>
 
-                <input
+                <input required
                   type="password"
                   id="PasswordConfirmation"
                   name="password_confirmation"
@@ -156,7 +159,7 @@ export const Login = () => {
 
               <div className="col-span-6">
                 <label htmlFor="MarketingAccept" className="flex gap-4">
-                  <input
+                  <input required
                     type="checkbox"
                     id="MarketingAccept"
                     name="marketing_accept"
@@ -185,7 +188,9 @@ export const Login = () => {
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-                <button className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
+                <button 
+                type="submit"
+                className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
                   Create an account
                 </button>
 
@@ -198,6 +203,11 @@ export const Login = () => {
                 </p>
               </div>
             </form>
+            <div className="col-span-6 sm:flex sm:items-center sm:gap-4 mt-4">
+              <Link href="https://askida-kod.onrender.com/api/public/google/login" className="text-center w-full shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
+                Create an account with Google
+              </Link>
+            </div>
           </div>
         </main>
       </div>

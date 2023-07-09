@@ -11,11 +11,16 @@ import { GetCode } from "./components/GetCode";
 export default function Home() {
   const router = useRouter();
   const [disable, setDisable] = useState(null);
+  const [logout, setLogout] = useState(false);
+  function logOutHandler() {
+    setAppInfo("logout");
+    setWindowsState(true);
+  }
   const [name, setName] = useState("");
-  const [appInfo, setAppInfo]= useState({
+  const [appInfo, setAppInfo] = useState({
     name: "bsky",
-    key: "1"
-  })
+    key: "1",
+  });
   const [windowState, setWindowsState] = useState(false);
   function onClose() {
     if (windowState) {
@@ -26,11 +31,14 @@ export default function Home() {
   function onOpen(appName, appKey) {
     setAppInfo({
       name: appName,
-      key: appKey
+      key: appKey,
     });
     setDisable("opacity-25 z-0");
     setWindowsState(true);
-
+  }
+  function loggedOutHandler() {
+    window.localStorage.clear();
+    router.push("/login");
   }
   useEffect(() => {
     setName(jsCookie.get("name"));
@@ -44,30 +52,35 @@ export default function Home() {
   const Apps = [
     {
       name: "bsky",
-      key: "1"
+      key: "1",
     },
     {
       name: "Insta",
-      key: "2"
+      key: "2",
     },
     {
       name: "Twitter",
-      key: "3"
+      key: "3",
     },
     {
       name: "facebook",
-      key: "4"
-    }
-  ]
+      key: "4",
+    },
+  ];
   return (
     <>
       {windowState && (
         <div className="absolute z-10 bottom-0 top-0 items-center grid grid-cols-1 w-full">
-          <GetCode onClose={onClose} name={appInfo.name} key={appInfo.key} classes="justify-self-center z-10" />
+          <GetCode
+            onClose={onClose}
+            loggedOutHandler={loggedOutHandler}
+            info={appInfo}
+            classes="justify-self-center z-10"
+          />
           <div className="z-0 w-full h-full" onClick={onClose}></div>
         </div>
       )}
-      <Auth authPage={false} name={name}>
+      <Auth authPage={false} logOutHandler={logOutHandler} name={name}>
         <main
           className={
             "flex flex-col h-auto items-center justify-between p-6 " + disable
@@ -98,16 +111,14 @@ export default function Home() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                {Apps.map((app) =>  
-                  <CodeApp
-                  key={app.key}
-                    name={app.name}
-                    description="test something new yauuuwwww"
-                    onClick={() => onOpen(app.name,app.key)}
-                  />
-                )}
-                  
-                
+                  {Apps.map((app) => (
+                    <CodeApp
+                      key={app.key}
+                      name={app.name}
+                      description="test something new yauuuwwww"
+                      onClick={() => onOpen(app.name, app.key)}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
