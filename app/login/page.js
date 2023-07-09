@@ -48,8 +48,9 @@ export default function Login() {
           setToggleDisable(false);
           if (result.status == 200) {
             alert(
-              "Signed up succesfully, please check your mail box for comfirmation link!"
+              "Signed up succesfully, please check your mail box for comfirmation link! Redirecting to login page."
             );
+            setToggleStatus(true);
           } else if (result.status == 400) {
             alert("This E-mail already in use by someone!");
           } else {
@@ -181,6 +182,7 @@ export default function Login() {
                         className="relative h-8 w-14 cursor-pointer"
                       >
                         <input
+                        checked={toggleStatus}
                           onChange={handleChange}
                           disabled={toggleDisable}
                           type="checkbox"
